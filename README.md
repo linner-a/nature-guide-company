@@ -1,2 +1,4 @@
 # nature-guide-company
-A company website for a "Natours", a nature guides company - Advanced responsive webdesign using CSS and Sass
+A fully responsive website created with CSS and Sass. 
+
+Created in connection with the course "Advanced CSS and Sass", given on Udemy by Jonas Schmedtmann.
