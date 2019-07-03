@@ -1,0 +1,40 @@
+*,
+*::before,
+*::after { /* Universal selector - make sure the standard is the same in all browsers */
+    margin: 0px;
+    padding: 0px;
+    box-sizing: inherit; /* Forces the box-sizing element to be inheritble in the whole document. Better practice to do this and then put the border-box declaration in the body selector, because it will then be easier to change later for plugins of other things */ 
+}
+
+html {
+    font-size: 62.5%; /* We want 1rem to be 10px; 10/16 = 62.5%. We want this to be 10px so that rem is easy to calc when using in the code. But that will remove peoples ability to change font size in their browser, and therefor it is bad practice. Broweser standard font size = 16. 10/16 = 0.625. Therefor we put 62.5% to get 10px in standard browser. */ 
+
+    @include respond(tab-land) {
+        font-size: 56.25%; //  we want 1rem = 9px ->  9/16 = 56.25%
+    }
+    @include respond(tab-port) {
+        font-size: 50%; // we want 1rem = 8px -> 8/16 = 50%
+    }
+    @include respond(big-desktop) {
+        font-size: 75%;  // we want 1rem = 12px -> 12/16 = 75%  
+    } 
+
+    // As this will decrease the size of 1 rem, everything that has been sized with rem in the design will decrease in size. phone is not included here as it does not need to be smaller than what is specified in tab-port. As phones are smaller than 900px wide (tab-port max-width), it will be applied to them as well
+
+
+
+}
+
+body {
+    box-sizing: border-box; /* Makes sure that padding and boarder is a part of an objecs specified height and width, instead of being added to it. Since the box-sizing element has been declared to be inhertible in the universal selctor, by putting it in the body selector, it is now inhetired by everything else */
+    padding: 3rem;
+
+    @include respond(tab-port) { /* Removes white boarder around the entire website */
+        padding: 0; 
+    }
+}
+
+::selection {
+    background-color: $color-light-green;
+    color: $color-white;
+}

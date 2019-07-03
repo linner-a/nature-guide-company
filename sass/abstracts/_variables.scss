@@ -1,0 +1,30 @@
+// GRID
+$grid-width: 114rem; /* Standard is to put 1140px. Which is = 114rem. Max width makes sure that it will take up this space if it is available, if not it will simply take up 100% of the space. */
+$gutter-vertical: 8rem;
+$gutter-vertical-small: 6rem;
+$gutter-horizontal: 6rem;
+
+//FONT
+$default-font-size: 1.6rem;
+
+// COLORS
+$color-light-green: #B8D8AC;
+$color-dark-green: #6F9068;
+$color-pink: #E2A2A8;
+
+$color-charcoal-light: #A0C1B8;
+$color-charcoal-dark: #709FB0;
+
+$color-rose-light: #DBE5E7;
+$color-rose-dark: #9EA3A4;
+
+$color-grey-light-1: #f7f7f7;
+$color-grey-light-2: #eee;
+
+$color-grey-dark: #212121;
+$color-grey-dark-2: #333;
+
+$color-text-grey: #777;
+$color-white: #fff;
+$color-black: #000;
+

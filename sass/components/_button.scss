@@ -1,0 +1,74 @@
+.btn {
+    
+    &, /* to make sure that the styles are applied when the class is added both to <a> elements and <button> elements. Only a and not button has the :link and :visited pseudoclasses */
+    &:link,
+    &:visited {
+            text-transform: uppercase;
+            text-decoration: none;
+            padding: 1.5rem 4rem; /* Fist one is top and bottom, second one is left and right */
+            border-radius: 10rem;
+            transition: all 0.2s; /* Decides that all properties can be animated (transform om :hover etc), and that it should last 0.2 sec */
+            font-size: $default-font-size;
+            box-shadow: 0 .5rem 2rem rgba($color-grey-dark, 0.7);
+
+            //Change needed for the <button> element, that is not needed when just styling an <a> element
+
+            border: none;
+            cursor: pointer;
+    }
+
+    &:hover {
+        transform: translateY(-.5rem);
+        box-shadow: 0 1rem 2rem rgba($color-grey-dark, 0.8); /* x-direction, y-direction, blurr, color */
+    }
+    
+    &:active,
+    &:focus {
+        transform: translateY(-.2rem);
+        box-shadow: 0 .5rem 2rem rgba($color-grey-dark, 0.7);
+        outline: none; /* Removes the blue boarded that appears when clicking on a <button> */
+    }
+    
+    &--pink {
+        background-color: $color-pink;
+        color: $color-white;
+        display: inline-block;
+    }
+
+    &--green {
+        background-color: $color-dark-green;
+        color: $color-white;
+        display: inline-block;
+    }
+    
+    &--animated {
+        animation: moveInBottom 0.5s ease-out 0.75s; /* 0.5s is the duration, 0.75s is how long it will wait until the animation starts */
+        animation-fill-mode: backwards; /* Makes sure the button is invisible before the animation start (sets the starting values of the animation to 0) */
+    }
+}
+
+.btn-text {
+
+    &:link,
+    &:visited {
+        font-size: $default-font-size;
+        display: inline-block;
+        text-decoration: none;
+        color: $color-dark-green;
+        border-bottom: 1px solid $color-dark-green;
+        padding: 3px;
+        transition: all .2s;
+    }
+
+    &:hover {
+        background-color: $color-dark-green;
+        color: white;
+        box-shadow: 0 1rem 2rem rgba($color-black, .3);
+        transform: translateY(-2px);
+    }
+
+    &:active {
+        box-shadow: 0 .5rem 1rem rgba($color-black, .3);
+        transform: translateY(0);
+    }
+}

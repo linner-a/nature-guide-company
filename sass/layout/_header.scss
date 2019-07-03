@@ -1,0 +1,45 @@
+.header {
+    height: 95vh;
+    background-image: linear-gradient(
+        to right bottom,
+        rgba($color-light-green, 0.6),
+        rgba($color-dark-green, 0.9)),
+        url(../img/hero-small.jpg);
+    background-size: cover; /* Makes sure that the element fits the box/viewports of different sizes */
+    background-position: top; /* Makes sure the background is always at the top, with no white space, no matter the viewport size */
+    position: relative;
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%); /* Makes sure it works in all browsers */
+    clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+
+    @media (min-resolution: 192dpi) and (min-width: 37.5em), // the comma works as "or"
+           (min-width: 125em) { // to make sure that screens that are very wide, but have low resolution, gets the big image
+            background-image: linear-gradient(
+                to right bottom,
+                rgba($color-light-green, 0.6),
+                rgba($color-dark-green, 0.9)),
+                url(../img/hero.jpg);
+    }
+
+    @include respond(phone) {
+        -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    }
+
+    &__logo-box {
+        position: absolute;
+        top: 4rem;
+        left: 4rem;
+    }
+
+    &__logo {
+        height: 3.5rem;
+    }
+    
+    &__text-box {
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%); /* Makes sure that the left and top properties start counting from the middle of the element in x and y direction */
+        text-align: center;
+    }
+}

@@ -1,0 +1,163 @@
+.popup {
+    height: 100vh;
+    width: 100%;
+    background-color: rgba($color-grey-dark, .9);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 3000;
+
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s;
+
+
+    &__content {
+        width: 75%;
+        background-color: $color-white;
+        box-shadow: 0 2rem 4rem rgba($color-black, .4);
+        border-radius: 3px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(.5);
+        display: table;
+        opacity: 0;
+        transition: all .4s .2s; /* .2s delay */
+
+        @include respond(tab-port) {
+            display: block;
+            
+        }
+
+        @include respond(phone) {
+            display: block;
+            width: 100%;
+        }
+        
+    }
+
+    &__left {
+        width: 33.3333333%;
+        display: table-cell;
+
+        @include respond(tab-port) {
+            width: 100%;
+            display: block;
+        }
+        
+
+    }
+
+    &__right {
+        width: 66.666666666%;
+        display: table-cell;
+        vertical-align: middle;
+        padding: 3rem 5rem;
+        position: relative;
+
+        @include respond(tab-port) {
+            width: 100%;
+            display: block;
+        }
+
+    }
+
+    &__img {
+        display: block;
+        width: 100%;
+
+        @include respond(tab-port) {
+            width: 50%;
+            height: 30vh;
+            display: inline-block;
+            float: left;
+            margin-bottom: 3rem;
+        }
+
+        @include respond(phone) {
+            width: 50%;
+            height: 25vh;
+            display: inline-block;
+            float: left;
+            margin-bottom: 3rem;
+        }
+
+    }
+
+    &__text {
+        font-size: 1.4rem;
+        margin-bottom: 4rem;
+
+        -moz-column-count: 2;
+        -moz-column-gap: 4rem;
+        -moz-column-rule: 1px solid $color-text-grey;
+
+        column-count: 2;
+        column-gap: 4rem;
+        column-rule: 1px solid $color-text-grey;
+
+        
+        -moz-hyphens: auto;
+        -webkit-hyphens: auto;
+        hyphens: auto;
+
+        @include respond(phone) {
+            -moz-column-count: 1;
+            column-count: 1;
+        }
+    }
+
+    &:target {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    &:target &__content {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+
+    &__close {
+        &:link,
+        &:visited {
+            position: absolute;
+            top: 2.5rem;
+            right: 2.5rem;
+            font-size: 3rem;
+            text-decoration: none;
+            display: inline-block;
+            color: $color-text-grey;
+            line-height: 1;
+            transition: all .2s;
+            
+
+            @include respond(tab-port) {
+                color: $color-white;
+                top: 1rem;
+                right: 1.5rem;
+                font-size: 4rem;
+            }
+        }
+
+        &:hover {
+            color: $color-light-green;
+        }
+    }
+
+    &__link {
+
+        @include respond(tab-port) {
+            &:link,
+            &:visited {
+                width: 20rem;
+                display: block;
+                margin: 0 auto;
+                text-align: center;
+            }
+        }
+
+    }
+
+    
+}

@@ -1,0 +1,19 @@
+.bg-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Makes sure that it is behind everything else (heading and button was still behind the video before this) */
+    opacity: .2;
+    overflow: hidden; /* object-fit: cover on the __content makes sure it fits properly and keeps right size ratio, but it will overflow on the sides and interrupt the white "frame" around everything on the page. This solves that.  */
+
+
+    &__content {
+        height: 100%;
+        width: 100%;
+        object-fit: cover; /* it is not enought with the width and height of 100% to make it fit properly and cover the whole section, the object-fit: cover  will make sure it covers the whole section but still has the same size ratio. The parts of it that is flowing outside of the parent element will simply be cut off. Exept on the sides see comment on .bg-video  */
+    }
+
+
+}

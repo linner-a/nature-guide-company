@@ -1,0 +1,104 @@
+.form {
+
+    transition: all .2s;
+
+    button {
+        margin-left: 20%;
+    }
+
+    &__group:not(:last-child) {
+        margin-bottom: 1rem;
+    }
+
+    &__input {
+        font-size: 1.5rem;
+        font-family: "Lato", sans-serif;
+        padding: 1.5rem 2rem;
+        background-color: rgba($color-white, .5);
+        border-radius: 2px;
+        border: none;
+        border-bottom: 3px solid transparent; /* So that it does not move 3px when it is in focus */
+        width: 80%;
+        display: block;
+    }
+
+    &__input:focus { /* When you have put the marker in the field/are writing */
+        outline: none;
+        box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
+        border-bottom: 3px solid $color-pink;
+    }
+
+    &__label {
+        font-size: 1.5rem;
+        font-weight: 500;
+        margin-left: 2rem;
+        margin-top: .7rem;
+        display: block;
+        transition: all .2s;
+        
+        
+
+    }
+
+    &__input:placeholder-shown + &__label { /* The pluss is a sibling selector. This one selects the next sibling in the html code. So __input and __label are siblingt, and the one you want to select must be after the other one in the html. */
+        opacity: 0;
+        visibility: hidden; /* Makes sure it completely dissapears from the page. But this one cannot be animated, therefore we need to opacity as well. */
+        transform: translateY(-4rem);
+    }
+
+
+    &__radio-group {
+        display: inline-block;
+        width: 49%;
+
+        @include respond(tab-port) {
+            width: 100%;
+            margin-bottom: 3rem;
+        }
+
+    }
+
+    &__radio-label {
+        font-size: $default-font-size;
+        cursor: pointer;
+        position: relative;
+        padding-left: 4rem;
+
+    }
+
+    &__radio-button {
+        height: 3rem;
+        width: 3rem;
+        border: 5px solid $color-dark-green;
+        border-radius: 50%;
+        display: inline-block;
+        position: absolute;
+        top: -.4;
+        left: 0;
+
+
+        &::after {
+            content: "";
+            display: block;
+            height: 1.5rem;
+            width: 1.5rem;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: $color-dark-green;
+            opacity: 0;
+        }
+
+
+    }
+
+    &__radio-input:checked + &__radio-label &__radio-button::after {
+        opacity: 1;
+    }
+
+    &__radio-input {
+        display: none;
+    }
+}

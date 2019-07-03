@@ -1,0 +1,202 @@
+// FUNCTIONALITY
+
+.card {
+    perspective: 150rem; /* Makes the animation of the cards rotation look natural, like it is actually rotating and "coming out" from the screen. Has to be on the parent*/
+    -moz-perspective: 150rem;
+    position: relative;
+    height: 52rem; /* Ass all child elements are taken out of the flow with the absolute positioning, the parent element loses its height. We must give it this height or the perspective thing will not work */
+
+    &__side {
+        height: 52rem;
+        transition: all 1s ease;
+        position: absolute; /* With absolute position we can use the top and left properties and set them to 0, to make the two boxes be on top of each other */
+        top: 0;
+        left: 0;
+        backface-visibility: hidden; /* Makes sure that the card that is at "the back" is not visible */ 
+        width: 100%; /*Putting the width to 100% makes it have the width of 100% of its parent, instead of onlu having the width of the text content */
+        border-radius: 3px;
+        overflow: hidden; /* Overflow hidden, because otherwise the background image in the child element __picture will overflow and hide the rounded corners that the corner-radius is giving. */
+        box-shadow: 0 1.5rem 4rem rgba($color-black, .15);
+
+        &--front {
+            background-color: #fff;
+        }
+
+        &--back {
+            transform: rotateY(180deg); /* The backside starts as rotated, and then on hover it goes back to the front and is visible, that is why it is set to 180deg here and 0 on hover. */
+        
+            &-1 {
+                background-image: linear-gradient(to right bottom, $color-charcoal-light, $color-charcoal-dark);
+            }
+
+            &-2 {
+                background-image: linear-gradient(to right bottom, $color-light-green, $color-dark-green);
+            }
+
+            &-3 {
+                background-image: linear-gradient(to right bottom, $color-rose-light, $color-rose-dark);
+            }
+        }
+    }  
+
+    &:hover &__side--front {
+        transform: rotateY(-180deg)
+    }
+
+    &:hover &__side--back {
+        transform: rotateY(0)
+    }
+
+
+//FRONT SIDE STYLING 
+    
+    &__picture {
+        background-size: cover;
+        height: 23rem;
+       // background-blend-mode: screen;
+        -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%); /* Makes sure it works in all browsers */
+        clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+
+        &--1 {
+            background-image: linear-gradient(to right bottom, rgba($color-charcoal-light, 0.7) , rgba($color-charcoal-dark, 0.9)), url(../img/nat-5.jpg);
+        }
+
+        &--2 {
+            background-image: linear-gradient(to right bottom, rgba($color-light-green, 0.7) , rgba($color-dark-green, 0.9)), url(../img/nat-6.jpg);
+        }
+
+        &--3 {
+            background-image: linear-gradient(to right bottom, rgba($color-rose-light, 0.8), rgba($color-rose-dark, 0.8)), url(../img/nat-7.jpg);
+        }
+
+    }
+
+    &__heading {
+        font-size: 2.8rem;
+        font-weight: 300;
+        color: $color-white;
+        text-transform: uppercase;
+        text-align: right;
+        position: absolute;
+        top: 12rem;
+        right: 2rem;
+        width: 75%
+    }
+
+    &__heading-span {
+        padding: 1rem 1.5rem;
+       -webkit-box-decoration-break: clone; /* We have put the width of the heading to 75%, and added the padding 1rem and 1.5rem. This is so that the heading will break to 2 lines and look like 2 boxes under each other. The box-decoration-break set to clone will now make sure the 2 lines are treated as 2 different elements. If we don't do this, the padding will not be added as we want to the two different lines, as the text will coniue to the end of the first one, and start right att the beginning of the first one */
+        box-decoration-break: clone;
+
+        &--1 {
+            background-image: linear-gradient(to right bottom, rgba($color-charcoal-light, .9), rgba($color-charcoal-dark, .9))
+        }
+
+        &--2 {
+            background-image: linear-gradient(to right bottom, rgba($color-light-green, .9), rgba($color-dark-green, .9))
+        }
+
+        &--3 {
+            background-image: linear-gradient(to right bottom, rgba($color-rose-light, .85), rgba($color-rose-dark, .85))
+        }
+    }
+
+    &__details {
+        padding: 3rem;
+
+        ul {
+            list-style: none;
+            width: 80%;
+            margin: 0 auto; /* Easiest way to center a block element within a block-element */
+    
+
+            li {
+                text-align: center;
+                font-size: 1.5rem;
+                padding: 1rem;
+
+                &:not(:last-child) {
+                    border-bottom: 1px solid $color-grey-light-2;
+                }
+            }
+        }
+    }
+
+//BACK SIDE STYLING
+
+    &__CTA {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 90%;
+        text-align: center;
+    }
+
+    &__price-box {
+        text-align: center;
+        color: $color-white;
+        margin-bottom: 5rem;
+    }
+
+    &__price-only {
+        font-size: 2.5rem;
+
+    }
+
+    &__price-value {
+        font-size: 12rem;
+        font-weight: 100;
+    }
+
+
+
+   // @include respond(tab-port) {
+
+    @media (max-width: 56.25em), (hover: none) {
+    
+    height: auto;
+    border-radius: 3px;
+    background-color: $color-white;
+    box-shadow: 0 1.5rem 4rem rgba($color-black, .15);
+
+    &__side {
+        height: auto;
+        position: relative; /* Making them sit after each other instead of on top when we remove the absolute positioning */
+        box-shadow: none;
+
+        &--back {
+            transform: rotateY(0); /* Rotate back to normal */
+            clip-path: polygon(0 9%, 100% 0, 100% 100%, 0 100%);
+        }
+    }  
+
+    &:hover &__side--front {
+        transform: rotateY(0) /* Wo don't want it to rotate now */
+    }
+
+    &__details {
+        padding: 1rem 3rem;
+    }
+
+//BACK SIDE STYLING
+
+    &__CTA {
+        position: relative;
+        top: 0;
+        left: 0;
+        transform: translate(0);
+        width: 100%;
+        padding: 7rem 4rem 4rem 4rem; 
+    }
+
+    &__price-box {
+        margin-bottom: 2rem;
+    }
+
+    &__price-value {
+        font-size: 8rem;
+    }
+}
+}
+

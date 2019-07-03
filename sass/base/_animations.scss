@@ -1,0 +1,43 @@
+@keyframes moveInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-10rem); /* Makes sure that it starts 100px to the left */
+    }
+
+    80% {
+        transform: translateX(1rem)
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0); /* 0 means that it is just like it is in its original form */
+    }
+}
+
+@keyframes moveInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(10rem); /* Makes sure that it starts 100px to the left */
+    }
+
+    80% {
+        transform: translateX(-1rem)
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0); /* 0 means that it is just like it is in its original form */
+    }
+}
+
+@keyframes moveInBottom {
+    0% {
+        opacity: 0;
+        transform: translateY(3rem); /* Makes sure that it starts 30px down */
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0); /* 0 means that it is just like it is in its original form */
+    }
+}
