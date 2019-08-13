@@ -1,5 +1,5 @@
 # nature-guide-company
-I am very happy with this website that I have created for an imagened company giving nature tours. 
+I am very happy with this fully responsive website that I have created for an imagened company giving nature tours.
 
 https://linner-a.github.io/nature-guide-company/
 
